@@ -38,6 +38,14 @@ public:
                                         mouse_motion_to_scroll_speed_,
                                         100);
 
+    helper_values_.push_back_value<int>("mouse_wheel_to_scroll.duration_milliseconds",
+                                        mouse_wheel_to_scroll_duration_milliseconds_,
+                                        180);
+
+    helper_values_.push_back_value<int>("mouse_wheel_to_scroll.speed",
+                                        mouse_wheel_to_scroll_speed_multiplier_,
+                                        100);
+
     pqrs::json::requires_object(json, "json");
 
     helper_values_.update_value(json, error_handling);
@@ -116,6 +124,28 @@ public:
     return static_cast<double>(mouse_motion_to_scroll_speed_) / 100;
   }
 
+  const int& get_mouse_wheel_to_scroll_duration_milliseconds(void) const {
+    return mouse_wheel_to_scroll_duration_milliseconds_;
+  }
+
+  void set_mouse_wheel_to_scroll_duration_milliseconds(int value) {
+    mouse_wheel_to_scroll_duration_milliseconds_ = value;
+    adjust_values();
+  }
+
+  const int& get_mouse_wheel_to_scroll_speed_multiplier(void) const {
+    return mouse_wheel_to_scroll_speed_multiplier_;
+  }
+
+  void set_mouse_wheel_to_scroll_speed_multiplier(int value) {
+    mouse_wheel_to_scroll_speed_multiplier_ = value;
+    adjust_values();
+  }
+
+  double make_mouse_wheel_to_scroll_speed_multiplier_rate(void) const {
+    return static_cast<double>(mouse_wheel_to_scroll_speed_multiplier_) / 100;
+  }
+
 private:
   void adjust_values(void) {
     adjust_value(basic_simultaneous_threshold_milliseconds_, 0, 1000);
@@ -123,6 +153,9 @@ private:
     adjust_value(basic_to_if_held_down_threshold_milliseconds_, 0, std::nullopt);
     adjust_value(basic_to_delayed_action_delay_milliseconds_, 0, std::nullopt);
     adjust_value(mouse_motion_to_scroll_speed_, 1, 10000);
+
+    adjust_value(mouse_wheel_to_scroll_duration_milliseconds_, 1, 10000);
+    adjust_value(mouse_wheel_to_scroll_speed_multiplier_, 1, 10000);
   }
 
   void adjust_value(int& value, std::optional<int> min, std::optional<int> max) {
@@ -149,6 +182,8 @@ private:
   int basic_to_if_held_down_threshold_milliseconds_;
   int basic_to_delayed_action_delay_milliseconds_;
   int mouse_motion_to_scroll_speed_;
+  int mouse_wheel_to_scroll_duration_milliseconds_;
+  int mouse_wheel_to_scroll_speed_multiplier_;
   configuration_json_helper::helper_values helper_values_;
 };
 } // namespace details

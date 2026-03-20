@@ -649,6 +649,38 @@ void libkrbn_core_configuration_set_selected_profile_complex_modifications_param
   p->set_mouse_motion_to_scroll_speed(value);
 }
 
+//
+// mouse_wheel_to_scroll_duration_milliseconds
+//
+
+int libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds(void) {
+  auto c = get_current_core_configuration();
+  auto p = c->get_selected_profile().get_complex_modifications()->get_parameters();
+  return p->get_mouse_wheel_to_scroll_duration_milliseconds();
+}
+
+void libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds(int value) {
+  auto c = get_current_core_configuration();
+  auto p = c->get_selected_profile().get_complex_modifications()->get_parameters();
+  p->set_mouse_wheel_to_scroll_duration_milliseconds(value);
+}
+
+//
+// mouse_wheel_to_scroll_speed_multiplier
+//
+
+int libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier(void) {
+  auto c = get_current_core_configuration();
+  auto p = c->get_selected_profile().get_complex_modifications()->get_parameters();
+  return p->get_mouse_wheel_to_scroll_speed_multiplier();
+}
+
+void libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier(int value) {
+  auto c = get_current_core_configuration();
+  auto p = c->get_selected_profile().get_complex_modifications()->get_parameters();
+  p->set_mouse_wheel_to_scroll_speed_multiplier(value);
+}
+
 void libkrbn_core_configuration_get_new_complex_modifications_rule_json_string(char* buffer,
                                                                                size_t length) {
   auto json_string = krbn::complex_modifications_utility::get_new_rule_json_string();

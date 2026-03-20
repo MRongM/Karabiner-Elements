@@ -234,6 +234,12 @@ void libkrbn_core_configuration_set_selected_profile_complex_modifications_param
 int libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_motion_to_scroll_speed(void);
 void libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_motion_to_scroll_speed(int value);
 
+int libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds(void);
+void libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds(int value);
+
+int libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier(void);
+void libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier(int value);
+
 void libkrbn_core_configuration_get_new_complex_modifications_rule_json_string(char* _Nonnull buffer,
                                                                                size_t length);
 void libkrbn_core_configuration_get_new_complex_modifications_rule_eval_js_string(char* _Nonnull buffer,

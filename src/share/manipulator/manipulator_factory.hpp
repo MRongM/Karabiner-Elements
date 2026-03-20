@@ -5,6 +5,7 @@
 #include "manipulator/manipulators/basic/basic.hpp"
 #include "manipulator/manipulators/mouse_basic/mouse_basic.hpp"
 #include "manipulator/manipulators/mouse_motion_to_scroll/mouse_motion_to_scroll.hpp"
+#include "manipulator/manipulators/mouse_wheel_to_scroll/mouse_wheel_to_scroll.hpp"
 #include "manipulator/manipulators/nop.hpp"
 #include "manipulator/types.hpp"
 #include <memory>
@@ -30,6 +31,9 @@ inline pqrs::not_null_shared_ptr_t<manipulators::base> make_manipulator(const nl
 
   } else if (type == "mouse_motion_to_scroll") {
     return std::make_shared<manipulators::mouse_motion_to_scroll::mouse_motion_to_scroll>(json,
+                                                                                          parameters);
+  } else if (type == "mouse_wheel_to_scroll") {
+    return std::make_shared<manipulators::mouse_wheel_to_scroll::mouse_wheel_to_scroll>(json,
                                                                                           parameters);
   } else {
     throw pqrs::json::unmarshal_error(fmt::format("unknown type `{0}`", type));

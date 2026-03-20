@@ -83,6 +83,36 @@ struct ComplexModificationsAdvancedView: View {
           .padding()
           .frame(maxWidth: .infinity, alignment: .leading)
         }
+
+        GroupBox(label: Text("type:mouse_wheel_to_scroll parameters")) {
+          VStack(alignment: .leading, spacing: 12.0) {
+            HStack {
+              Text("duration:")
+
+              IntTextField(
+                value: $settings.complexModificationsParameterMouseWheelToScrollDurationMilliseconds,
+                range: 0...10000,
+                step: 10,
+                width: 50)
+
+              Text("ms (Default value is 180)")
+            }
+
+            HStack {
+              Text("speed:")
+
+              IntTextField(
+                value: $settings.complexModificationsParameterMouseWheelToScrollSpeedMultiplier,
+                range: 0...10000,
+                step: 10,
+                width: 50)
+
+              Text("% (Default value is 100)")
+            }
+          }
+          .padding()
+          .frame(maxWidth: .infinity, alignment: .leading)
+        }
       }
       .padding()
     }

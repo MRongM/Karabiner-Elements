@@ -103,6 +103,14 @@ extension LibKrbn {
         libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_motion_to_scroll_speed()
       )
 
+      complexModificationsParameterMouseWheelToScrollDurationMilliseconds = Int(
+        libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds()
+      )
+
+      complexModificationsParameterMouseWheelToScrollSpeedMultiplier = Int(
+        libkrbn_core_configuration_get_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier()
+      )
+
       updateConnectedDeviceSettings()
 
       delayMillisecondsBeforeOpenDevice = Int(
@@ -549,6 +557,28 @@ extension LibKrbn {
         if didSetEnabled {
           libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_motion_to_scroll_speed(
             Int32(complexModificationsParameterMouseMotionToScrollSpeed)
+          )
+          save()
+        }
+      }
+    }
+
+    @Published var complexModificationsParameterMouseWheelToScrollDurationMilliseconds: Int = 0 {
+      didSet {
+        if didSetEnabled {
+          libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_duration_milliseconds(
+            Int32(complexModificationsParameterMouseWheelToScrollDurationMilliseconds)
+          )
+          save()
+        }
+      }
+    }
+
+    @Published var complexModificationsParameterMouseWheelToScrollSpeedMultiplier: Int = 0 {
+      didSet {
+        if didSetEnabled {
+          libkrbn_core_configuration_set_selected_profile_complex_modifications_parameter_mouse_wheel_to_scroll_speed_multiplier(
+            Int32(complexModificationsParameterMouseWheelToScrollSpeedMultiplier)
           )
           save()
         }
